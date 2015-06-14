@@ -6,9 +6,8 @@ from Levenshtein import distance
 
 
 IG_CONFIG = {
-    'client_id': '9014d912517a4e408b0a174af14ca213',
-    'client_secret': 'cadcf1c1a3fc4b80bf8fc4b310672a64',
-    'redirect_uri': 'http://localhost:8515/oauth_callback'
+    'client_id': '',
+    'client_secret': '',
 }
 
 class InstagramUser:
@@ -21,7 +20,7 @@ class InstagramUser:
 
 def foursquare_connect():
     # Construct the client object
-    client = foursquare.Foursquare(client_id='LU445L3JBD1QDINF4UXVQK33TZB2VA0GP4YH2Z4OYASBFQI5', client_secret='U4RX4UIYGZ1CV1D1TIVURRXQ3J3UND2LVZGRZDR0DPR5VNPM')
+    client = foursquare.Foursquare(client_id='', client_secret='')
     return client
 
 
@@ -41,8 +40,8 @@ def write_to_file(instagram_user, i, file):
 fs_api = foursquare_connect()
 ig_api = instagram_connect()
 
-places = [line.rstrip('\n') for line in open('cool_places_in_sf')]
-f = open('brand_ambassadors','w')
+places = [line.rstrip('\n') for line in open('cool_places')]
+f = open('influencers','w')
 i = 1
 user_output = []
 
@@ -98,7 +97,7 @@ f.close()
 i = 1
 user_output.sort(key=lambda x: x.followers, reverse=True)
 user_output = list(set(user_output))
-f = open('brand_ambassadors_ordered','w')
+f = open('influencers_ordered','w')
 for user in user_output:
     write_to_file(user, i, f)
     i+=1
