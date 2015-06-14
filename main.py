@@ -3,12 +3,8 @@ __author__ = 'yardeneitan'
 from instagram import client
 import foursquare
 from Levenshtein import distance
-
-
-IG_CONFIG = {
-    'client_id': '',
-    'client_secret': '',
-}
+from more_itertools import unique_everseen
+from config import IG_CONFIG, FS_CONFIG
 
 class InstagramUser:
     def __init__(self, name, username, picture, followers, id):
@@ -20,7 +16,7 @@ class InstagramUser:
 
 def foursquare_connect():
     # Construct the client object
-    client = foursquare.Foursquare(client_id='', client_secret='')
+    client = foursquare.Foursquare(client_id=FS_CONFIG['client_id'], client_secret=FS_CONFIG['client_secret'])
     return client
 
 
@@ -96,7 +92,7 @@ for place in places:
 f.close()
 i = 1
 user_output.sort(key=lambda x: x.followers, reverse=True)
-user_output = list(set(user_output))
+user_output = list(unique_everseen(user_output))
 f = open('influencers_ordered','w')
 for user in user_output:
     write_to_file(user, i, f)
