@@ -14,6 +14,6 @@ and the other: <b>influencers_ordered</b>
 
 As the name hints, the second file removes duplicates and orders the influencers by amount of followers (decreasing).
 
-Don't forget to put your own foursquare and instagram client_id and client_secret
+Don't forget to put your own foursquare and instagram client_id and client_secret in <b>config.py</b>
 
 Godspeed.
